@@ -8,7 +8,7 @@
         }
 
         .btnRegister {
-            background-color: beige;
+            background-color:snow;
             border: none;
             color: blue;
             text-align: center;
@@ -134,7 +134,7 @@
             </table>
             <br />
 
-            <asp:Button ID="btnRegis" CssClass="btnRegister" Text="Register" runat="server" ValidationGroup="rfv" OnClick="BtnRegister" Height="35px" />
+            <asp:Button ID="btnRegis" CssClass="btnRegister" Text="Register"  runat="server" ValidationGroup="rfv" OnClick="BtnRegister" Height="35px" />
 
         </div>
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibraryAutomationSystem.DAL
 {
-    class SqlConnections
+    public class SqlConnections
     {
         public static SqlConnection GetConnection()
         {
