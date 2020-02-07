@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="LibraryAutomationSystem.Home" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="masterHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:Button ID="btnLink" runat="server" OnClick="BtnLink"  Text="Login"/>
+        <asp:Button ID="btnRegister" runat="server" OnClick="BtnRegister"  Text="Register"/>
+
+        <asp:ContentPlaceHolder ID="masterBody" runat="server">
+         </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
