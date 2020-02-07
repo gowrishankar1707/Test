@@ -21,7 +21,17 @@ namespace sample_web_application
             if(Page.IsValid)
             {
                 User user = new User(txtName.Text, txtUserName.Text, txtConfirmPassword.Text, txtDate.Text, txtDOJ.Text, radioGender.Text, txtPhoneNumber.Text, txtE_mail.Text, txtAddress.Text);
-                bool myBool=UserRepositary.re
+                bool myBool = UserRerpositary.Register(user.memberName, user.memberUserName, user.memberPassword, user.memberDOB, user.memberDOJ, user.memberSex, user.memberPhoneNumber, user.e_Mail, user.memberAddress);
+                if(myBool)
+                {
+                    Response.Write("Register successfully");
+
+                }
+                else
+                {
+                    Response.Write("Unsuccessfully");
+                }
+           
 
             }
         }

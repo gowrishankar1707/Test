@@ -104,7 +104,7 @@
                 <tr>
                     <td>PhoneNumber</td>
                     <td>
-                        <asp:TextBox ID="txtPhoneNumber" runat="server" placeholder="Enter the Phone number" TextMode="Phone" ValidationGroup="rfv"></asp:TextBox>
+                        <asp:TextBox ID="txtPhoneNumber" runat="server" placeholder="Enter the Phone number"  ValidationGroup="rfv"></asp:TextBox>
                     </td>
                     <td>
                         <asp:RequiredFieldValidator ID="rfvPhoneNumber" ControlToValidate="txtPhoneNumber" runat="server" ErrorMessage="Phone Number is required" ValidationGroup="rfv"></asp:RequiredFieldValidator>
