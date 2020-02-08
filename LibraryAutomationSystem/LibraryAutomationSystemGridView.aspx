@@ -7,16 +7,16 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form runat="server">
         <div>
-            <asp:GridView ID="lasGridView" runat="server" AutoGenerateColumns="false" OnRowDeleting="lasGridView_RowDeleting" OnRowEditing="lasGridView_RowEditing"  OnRowCancelingEdit="lasGridView_RowCancelingEdit" OnSelectedIndexChanged="lasGridView_SelectedIndexChanged">
+            <asp:GridView ID="lasGridView" runat="server" AutoGenerateColumns="false"  DataKeyNames="UserID">
                 <Columns>
                     <asp:TemplateField HeaderText="Name">
                         <ItemTemplate>
-                            <asp:Label Text='<%# Eval("Name") %>' runat="server"></asp:Label>
+                            <asp:Label ID="lblName" Text='<%# Bind("Name") %>' runat="server"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtName" Text='<%# Eval("Name") %>' runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtName" Text='<%# Bind("Name") %>' runat="server"></asp:TextBox>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="txtNameFooter" runat="server"></asp:TextBox>
@@ -61,8 +61,8 @@
 
                     <asp:TemplateField HeaderText="Gender">
                         <ItemTemplate>
-                            <%--<asp:Label Text='<%# Eval("Gender") %>' runat="server"></asp:Label>--%>
-                             <asp:TextBox ID="txtGender" Text='<%# Eval("Gender") %>' runat="server"></asp:TextBox>
+                            <asp:Label Text='<%# Eval("Gender") %>' runat="server"></asp:Label>
+<%--                             <asp:TextBox ID="txtGender" Text='<%# Eval("Gender") %>' runat="server"></asp:TextBox>--%>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <%--<asp:TextBox ID="txtGender" Text='<%# Eval("Gender") %>' runat="server"></asp:TextBox>--%>
@@ -86,6 +86,7 @@
                         <FooterTemplate>
                             <asp:TextBox ID="txtEmailFooter" runat="server"></asp:TextBox>
                         </FooterTemplate>
+                      
                     </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="PhoneNumber">
@@ -116,15 +117,15 @@
                             
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="true"  ControlStyle-BorderWidth="5px" ControlStyle-BackColor="#ffff00" ControlStyle-BorderColor="#808080"/>
+                <%--    <asp:CommandField ShowEditButton="true"  ControlStyle-BorderWidth="5px" ControlStyle-BackColor="#ffff00" ControlStyle-BorderColor="#808080"/>
                     <asp:CommandField ShowDeleteButton="true" ControlStyle-BorderWidth="5px" ControlStyle-BackColor="#ffff00" ControlStyle-BorderColor="#808080" />
-
+--%>
 
 
                 </Columns>
 
             </asp:GridView>
         </div>
-    </form>
+        </form>
 </body>
 </html>

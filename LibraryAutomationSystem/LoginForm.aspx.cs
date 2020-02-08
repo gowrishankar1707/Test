@@ -22,7 +22,7 @@ namespace sample_web_application
             if (Page.IsValid)
             {
                 User user = new User(txtUserName.Text, txtPassword.Text);
-                bool myBool =UserRerpositary.LogIn(user.memberName, user.memberPassword);
+                bool myBool =UserRerpositary.LogIn(user.memberUserName, user.memberPassword);
                 if (myBool)
                 {
                     Response.Write("Successful");

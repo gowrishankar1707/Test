@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LibraryAutomationSystem.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LibraryAutomationSystem.DAL\bin\Debug\LibraryAutomationSystem.DAL.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -167,10 +171,6 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibraryAutomationSystem.DAL\LibraryAutomationSystem.DAL.csproj">
-      <Project>{1e56d511-b0ef-4085-8f75-fdb0a59f097a}</Project>
-      <Name>LibraryAutomationSystem.DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LibraryAutomationSystem.Entity\LibraryAutomationSystem.Entity.csproj">
       <Project>{cce808bc-b39a-48ab-a53b-a290d0d34913}</Project>
       <Name>LibraryAutomationSystem.Entity</Name>

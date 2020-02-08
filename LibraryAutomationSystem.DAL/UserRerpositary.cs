@@ -25,7 +25,7 @@ namespace LibraryAutomationSystem.DAL
                 sqlConnection.Open();
                 command.ExecuteNonQuery();
                 int id = Convert.ToInt32(command.Parameters["@Id"].Value);
-                if (id > 1)
+                if (id >= 1)
                 {
                     return true;
                 }
