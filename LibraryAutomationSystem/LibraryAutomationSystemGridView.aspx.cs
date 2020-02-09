@@ -12,59 +12,104 @@ namespace LibraryAutomationSystem
 {
     public partial class LibraryAutomationSystemGridView : System.Web.UI.Page
     {
+        SqlConnection sqlconnection = SqlConnections.GetConnection();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                BindData();
+                FillGrid();
 
             }
         }
-        protected void BindData()
+        protected void FillGrid()
         {
-            SqlConnection sqlconnection = SqlConnections.GetConnection();
+
             try
             {
                 using (SqlCommand selectCommand = new SqlCommand("sp_SelectMember", sqlconnection))
                 {
                     selectCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    SqlDataAdapter adapter = new SqlDataAdapter();
-                    adapter.SelectCommand = selectCommand;
                     DataTable table = new DataTable();
-                    adapter.Fill(table);
-                    lasGridView.DataSource = table;
-                    lasGridView.DataBind();
+                    if (sqlconnection.State == ConnectionState.Closed)
+                    {
+                        sqlconnection.Open();
+                        IDataReader reader = selectCommand.ExecuteReader();
+                        table.Load(reader);
+
+
+                    }
+                    if (table.Rows.Count >= 1)
+                    {
+                        lasGridView.DataSource = table;
+                        lasGridView.DataBind();
+                    }
+
+
+
 
                 }
             }
-            catch(Exception ex)   
+            catch (Exception ex)
             {
                 Response.Write(ex.Message);
             }
         }
-        protected void FillLibraryAutomationSystemGrid()
-        {
-
-        }
-
-        protected void lasGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-
-        }
 
         protected void lasGridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            lasGridView.EditIndex = e.NewEditIndex;
+            FillGrid();
 
         }
 
         protected void lasGridView_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
+            lasGridView.EditIndex = -1;
+            FillGrid();
+        }
+
+        protected void lasGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int UserID = Convert.ToInt32(lasGridView.DataKeys[e.RowIndex].Values["UserID"].ToString());
+            sqlconnection.Open();
+            using (SqlCommand deleteProcedure = new SqlCommand("sp_DeleteMember", sqlconnection))
+            {
+                deleteProcedure.CommandType = CommandType.StoredProcedure;
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@UserID";
+                param.Value = UserID;
+                param.SqlDbType = SqlDbType.Int;
+                deleteProcedure.Parameters.Add(param);
+                sqlconnection.Open();
+                deleteProcedure.ExecuteNonQuery();
+                FillGrid();
+
+
+
+                //if (sqlconnection.State == ConnectionState.Closed)
+                //{
+                //    sqlconnection.Open();
+                //    int rows = deleteProcedure.ExecuteNonQuery();
+
+                //    sqlconnection.Close();
+                //}
+
+            }
+
 
         }
 
-        protected void lasGridView_SelectedIndexChanged(object sender, EventArgs e)
+        protected void lasGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
 
+
+
+        }
+
+        protected void lasGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            lasGridView.PageIndex = e.NewPageIndex;
+            FillGrid();
         }
     }
 }
