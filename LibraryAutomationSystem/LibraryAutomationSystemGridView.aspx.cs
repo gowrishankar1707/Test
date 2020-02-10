@@ -80,9 +80,10 @@ namespace LibraryAutomationSystem
                 param.Value = UserID;
                 param.SqlDbType = SqlDbType.Int;
                 deleteProcedure.Parameters.Add(param);
-                sqlconnection.Open();
+
                 deleteProcedure.ExecuteNonQuery();
                 FillGrid();
+                sqlconnection.Close();
 
 
 
@@ -93,6 +94,7 @@ namespace LibraryAutomationSystem
 
                 //    sqlconnection.Close();
                 //}
+            
 
             }
 
@@ -101,7 +103,51 @@ namespace LibraryAutomationSystem
 
         protected void lasGridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            int userID = Convert.ToInt32(lasGridView.DataKeys[e.RowIndex].Value.ToString());
+            string name = ((TextBox)lasGridView.Rows[e.RowIndex].FindControl("txtName")).Text;
+            string userName = ((TextBox)lasGridView.Rows[e.RowIndex].FindControl("txtUserName")).Text;
+            string DOB = ((TextBox)lasGridView.Rows[e.RowIndex].FindControl("txtDOB")).Text;
+            string DOJ = ((TextBox)lasGridView.Rows[e.RowIndex].FindControl("txtDOJ")).Text;
+            string gender = ((DropDownList)lasGridView.Rows[e.RowIndex].FindControl("ddgender")).Text;
+            string email= ((TextBox)lasGridView.Rows[e.RowIndex].FindControl("txtEmail")).Text;
+            string phoneNumber= ((TextBox)lasGridView.Rows[e.RowIndex].FindControl("txtPhoneNumber")).Text;
+            string address= ((TextBox)lasGridView.Rows[e.RowIndex].FindControl("txtAddress")).Text;
 
+
+            using (SqlCommand updateCommand = new SqlCommand("sp_UpdateMember", sqlconnection))
+            {
+                sqlconnection.Open();
+                updateCommand.CommandType = CommandType.StoredProcedure;
+                updateCommand.Parameters.AddWithValue("@UserID", userID);
+                updateCommand.Parameters.AddWithValue("@Name", name);
+                updateCommand.Parameters.AddWithValue("@UserName", userName);
+
+                SqlParameter parameter = new SqlParameter();
+                parameter.ParameterName = "@DOB";
+                parameter.Value = DOB;
+                parameter.SqlDbType = SqlDbType.Date;
+                updateCommand.Parameters.Add(parameter);
+
+                parameter = new SqlParameter();
+                parameter.ParameterName = "@DOJ";
+                parameter.Value = DOB;
+                parameter.SqlDbType = SqlDbType.Date;
+                updateCommand.Parameters.Add(parameter);
+
+                
+                updateCommand.Parameters.AddWithValue("@Gender", gender);
+                updateCommand.Parameters.AddWithValue("@Email", email);
+                updateCommand.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+                updateCommand.Parameters.AddWithValue("@UserAddress", address);
+                updateCommand.ExecuteNonQuery();
+                sqlconnection.Close();
+                lasGridView.EditIndex = -1;
+                FillGrid();
+            }
+
+
+
+    
 
 
         }

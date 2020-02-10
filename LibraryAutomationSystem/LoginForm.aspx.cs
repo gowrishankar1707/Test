@@ -1,6 +1,7 @@
 ﻿using System;
 using LibraryAutomationSystem.DAL;
 using LibraryAutomationSystem.Entity;
+using LibraryAutomationSytem.BL;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace sample_web_application
             if (Page.IsValid)
             {
                 User user = new User(txtUserName.Text, txtPassword.Text);
-                bool myBool =UserRerpositary.LogIn(user.memberUserName, user.memberPassword);
+                bool myBool = BuisnessLayer.Login(user.memberUserName, user.memberPassword);
                 if (myBool)
                 {
                     Response.Write("Successful");

@@ -1,4 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Home.Master" CodeBehind="LoginForm.aspx.cs" Inherits="sample_web_application.LoginForm" %>
+
+
+
+
 <asp:Content ID="LoginContent" runat="server" ContentPlaceHolderID="masterBody">
     <style>
         table,td{
@@ -22,13 +26,19 @@
         <tr>
             <td><strong> UserName</strong></td>
             <td>
-             <asp:TextBox ID="txtUserName" placeholder="UserName" runat="server" TextMode="SingleLine" ></asp:TextBox>
+             <asp:TextBox ID="txtUserName" placeholder="UserName" runat="server" TextMode="SingleLine" MaxLength="25" ></asp:TextBox>
+            </td>
+            <td>
+                <asp:RequiredFieldValidator ID="rfvUserName" ControlToValidate="txtUserName" runat="server" BackColor="#cc3300"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td><strong>Password</strong></td>
             <td>
-               <asp:TextBox ID="txtPassword" placeholder="Password" runat="server" TextMode="SingleLine" ></asp:TextBox>
+               <asp:TextBox ID="txtPassword" placeholder="Password" runat="server" TextMode="Password" MaxLength="20" ></asp:TextBox>
+            </td>
+            <td>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" BackColor="#996600"></asp:RequiredFieldValidator>
             </td>
         </tr>
     </table>

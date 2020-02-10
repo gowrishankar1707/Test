@@ -175,6 +175,10 @@
       <Project>{cce808bc-b39a-48ab-a53b-a290d0d34913}</Project>
       <Name>LibraryAutomationSystem.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LibraryAutomationSytem.BL\LibraryAutomationSytem.BL.csproj">
+      <Project>{5b7d654d-eec5-4199-a549-b0d26c670c66}</Project>
+      <Name>LibraryAutomationSytem.BL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

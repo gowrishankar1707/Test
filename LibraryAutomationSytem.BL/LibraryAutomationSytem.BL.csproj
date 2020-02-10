@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1E56D511-B0EF-4085-8F75-FDB0A59F097A}</ProjectGuid>
+    <ProjectGuid>{5B7D654D-EEC5-4199-A549-B0D26C670C66}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibraryAutomationSystem.DAL</RootNamespace>
-    <AssemblyName>LibraryAutomationSystem.DAL</AssemblyName>
+    <RootNamespace>LibraryAutomationSytem.BL</RootNamespace>
+    <AssemblyName>LibraryAutomationSytem.BL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -42,9 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SqlConnections.cs" />
-    <Compile Include="UserRerpositary.cs" />
+    <Compile Include="BuisnessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibraryAutomationSystem.DAL\LibraryAutomationSystem.DAL.csproj">
+      <Project>{1e56d511-b0ef-4085-8f75-fdb0a59f097a}</Project>
+      <Name>LibraryAutomationSystem.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,7 +9,7 @@
 <body>
     <form runat="server">
         <div>
-            <asp:GridView ID="lasGridView" runat="server" AutoGenerateColumns="false"  DataKeyNames="UserID"   AllowPaging="true" GridLines="None"  EmptyDataText="No data in gridview" OnPageIndexChanging="lasGridView_PageIndexChanging" OnRowEditing="lasGridView_RowEditing" OnRowCancelingEdit="lasGridView_RowCancelingEdit" OnRowDeleting="lasGridView_RowDeleting" OnRowUpdating="lasGridView_RowUpdating">
+            <asp:GridView ID="lasGridView" runat="server" AutoGenerateColumns="false"  DataKeyNames="UserID"   AllowPaging="true" GridLines="Horizontal"  EmptyDataText="No data in gridview" OnPageIndexChanging="lasGridView_PageIndexChanging" OnRowEditing="lasGridView_RowEditing" OnRowCancelingEdit="lasGridView_RowCancelingEdit" OnRowDeleting="lasGridView_RowDeleting" OnRowUpdating="lasGridView_RowUpdating">
                 <Columns>
                     <asp:TemplateField HeaderText="Name">
                         <ItemTemplate>
@@ -126,7 +126,7 @@
                     </asp:TemplateField>
                     <asp:CommandField ShowEditButton="true" ControlStyle-ForeColor="#800000" />
                     <asp:CommandField ShowDeleteButton="true" ControlStyle-ForeColor="#663300" />
-                    <asp:CommandField ShowInsertButton="true" ControlStyle-ForeColor="#663300" />
+          
 
 
                 </Columns>
